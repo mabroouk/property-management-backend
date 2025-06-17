@@ -21,7 +21,11 @@ app.config['SECRET_KEY'] = 'property_management_secret_key_2024'
 app.config['JWT_SECRET_KEY'] = 'jwt_secret_key_property_management_2024'
 
 # تمكين CORS للسماح بالطلبات من مصادر مختلفة
-CORS(app, origins="*")
+CORS(app, 
+     origins=["*"],
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization"],
+     supports_credentials=True)
 
 # تهيئة JWT
 jwt = JWTManager(app)
